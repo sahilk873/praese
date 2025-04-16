@@ -3,6 +3,9 @@ import os
 from datetime import datetime
 
 from flask import Flask, request, render_template_string, send_file, redirect, url_for, flash
+from flask_cors import CORS
+ # enable CORS for all routes
+
 
 # ── your helper modules ────────────────────────────────────────────────
 from find_contact_subprocess import extract_contacts_to_csv      # refresh address‑book CSV
@@ -21,6 +24,8 @@ os.makedirs(EXPORT_DIR, exist_ok=True)
 # ---------------------------------------------------------------------
 app = Flask(__name__)
 app.secret_key = "change‑me"
+
+CORS(app) 
 
 TEMPLATE = """
 <!doctype html><html lang="en">
